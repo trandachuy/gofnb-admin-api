@@ -2,7 +2,7 @@ FROM appdynamics/dotnet-core-agent AS base
 WORKDIR /app
 EXPOSE 80
 
-FROM microsoft/dotnet:2.2.103-sdk AS build
+FROM appdynamics/dotnet-core-agent AS build
 WORKDIR /src
 COPY ["GoFoodBeverage.WebApi/GoFoodBeverage.WebApi.csproj", "WebApp/FileManager.WebApp/"]
 RUN dotnet restore "WebApp/FileManager.WebApp/GoFoodBeverage.WebApi.csproj"
