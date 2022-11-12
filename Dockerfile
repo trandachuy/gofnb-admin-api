@@ -18,4 +18,4 @@ FROM base AS final
 WORKDIR /app
 COPY --from=publish /app .
 COPY GoFoodBeverage.WebApi/wwwroot/. /app/wwwroot
-ENTRYPOINT ["dotnet", "filemanager.dll"]
+ENTRYPOINT ["dotnet", "GoFoodBeverage.WebApi.dll"]
