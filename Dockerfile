@@ -3,13 +3,13 @@ FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /source
 
 # copy csproj and restore as distinct layers
-COPY workspace/gofnb-admin-api/GoFoodBeverage/*.sln .
-COPY workspace/gofnb-admin-api/GoFoodBeverage/GoFoodBeverage.WebApi/*.*.csproj ./aspnetapp/
+COPY GoFoodBeverage/*.sln .
+COPY GoFoodBeverage/GoFoodBeverage.WebApi/*.*.csproj ./aspnetapp/
 RUN dotnet restore
 RUN dotnet ef database update --context $(dbContext) --connection "Server=14.161.27.198,11433;Initial Catalog=dev-go-food-beverage-db;Persist Security Info=False;User ID=dev-gofood-beverage-admin;Password=tm(8y'2Y$J-f/dL;MultipleActiveResultSets=true;Encrypt=True;TrustServerCertificate=True;Connection Timeout=30
 
 # copy everything else and build app
-COPY workspace/gofnb-admin-api/GoFoodBeverage/GoFoodBeverage.WebApi/. ./aspnetapp/
+COPY GoFoodBeverage/GoFoodBeverage.WebApi/. ./aspnetapp/
 WORKDIR /source/aspnetapp
 RUN dotnet publish -c release -o /app --no-restore
 
