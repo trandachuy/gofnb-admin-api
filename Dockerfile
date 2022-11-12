@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/core/sdk:2.2 AS base
+FROM appdynamics/dotnet-core-agent AS base
 WORKDIR /app
 EXPOSE 80
 
