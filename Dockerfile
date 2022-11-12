@@ -6,7 +6,7 @@ WORKDIR /source
 COPY *.sln .
 COPY GoFoodBeverage.WebApi/*.*.csproj ./aspnetapp/
 RUN dotnet restore ./aspnetapp/*.*.csproj
-RUN dotnet ef database update --context $(dbContext) --connection "Server=14.161.27.198,11433;Initial Catalog=dev-go-food-beverage-db;Persist Security Info=False;User ID=dev-gofood-beverage-admin;Password=tm(8y'2Y$J-f/dL;MultipleActiveResultSets=true;Encrypt=True;TrustServerCertificate=True;Connection Timeout=30
+RUN dotnet ef database update --context GoFoodBeverageDbContext --connection "Server=14.161.27.198,11433;Initial Catalog=dev-go-food-beverage-db;Persist Security Info=False;User ID=dev-gofood-beverage-admin;Password=tm(8y'2Y$J-f/dL;MultipleActiveResultSets=true;Encrypt=True;TrustServerCertificate=True;Connection Timeout=30
 
 # copy everything else and build app
 COPY GoFoodBeverage.WebApi/. ./aspnetapp/
