@@ -8,6 +8,7 @@ FROM mcr.microsoft.com/dotnet/sdk:5.0-buster-slim AS build
 WORKDIR /src
 COPY ["GoFoodBeverage.WebApi/GoFoodBeverage.WebApi.csproj", "GoFoodBeverage.WebApi/"]
 RUN dotnet restore "GoFoodBeverage.WebApi/GoFoodBeverage.WebApi.csproj"
+RUN dotnet ef database update --context $(dbContext) --connection "Server=tcp:qa-gofnb-sqlserver.database.windows.net,1433;Initial Catalog=qa-gofood-beverage-db;Persist Security Info=False;User ID=qa-gofood-beverage-admin;Password=4Kda3Pt$4BH#J1dIU38;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"
 COPY . .
 WORKDIR "/src/GoFoodBeverage.WebApi"
 RUN dotnet build "GoFoodBeverage.WebApi.csproj" -c Release -o /app/build
